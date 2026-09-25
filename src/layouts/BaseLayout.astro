@@ -1,0 +1,5 @@
+---
+import Header from '../components/Header.astro';import Footer from '../components/Footer.astro';import '../styles.css';import '../theme-refresh.css';
+const {title='GPA Calculator for Every University | GPABound',description='Calculate your semester GPA and cumulative GPA with university-specific grading scales.',canonical=new URL(Astro.url.pathname,Astro.site),jsonLd=[]}=Astro.props;
+---
+<!doctype html><html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width"/><meta name="description" content={description}/><link rel="canonical" href={canonical}/><meta property="og:title" content={title}/><meta property="og:description" content={description}/><meta property="og:type" content="website"/><meta property="og:url" content={canonical}/><title>{title}</title>{jsonLd.map((s)=><script type="application/ld+json" set:html={JSON.stringify(s)}/>)}</head><body><Header/><main><slot/></main><Footer/></body></html>

@@ -1,0 +1,4 @@
+---
+const {scale}=Astro.props;
+---
+<div class="table-wrap"><table><thead><tr><th>Letter grade</th><th>Grade points</th><th>Marks range</th></tr></thead><tbody>{scale.map((s)=><tr><td><b>{s.grade}</b></td><td>{s.gpa.toFixed(2)}</td><td>{s.minMarks}%–{s.maxMarks}%</td></tr>)}</tbody></table></div>

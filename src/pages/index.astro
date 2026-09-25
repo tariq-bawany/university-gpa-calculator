@@ -1,0 +1,23 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Calculator from '../components/CalculatorWidget.jsx';
+import UniversitySearch from '../components/UniversitySearch.jsx';
+import universities from '../data/universities.json';
+const scale=[{grade:'A',gpa:4},{grade:'A-',gpa:3.7},{grade:'B+',gpa:3.3},{grade:'B',gpa:3},{grade:'B-',gpa:2.7},{grade:'C+',gpa:2.3},{grade:'C',gpa:2},{grade:'D',gpa:1},{grade:'F',gpa:0}];
+---
+<BaseLayout>
+  <section class="home-hero"><div class="wrap hero">
+    <span class="eyebrow">UNIVERSITY-SPECIFIC GPA TOOLS</span>
+    <h1>Calculate your GPA with the scale that actually applies.</h1>
+    <p>Choose your university or use the standard 4.0 calculator. Clear results, no account, no spreadsheet.</p>
+    <UniversitySearch client:load {universities} />
+    <div class="hero-proof"><span>✓ Free to use</span><span>✓ Private by design</span><span>✓ Credit-weighted</span></div>
+  </div></section>
+  <div class="wrap">
+    <Calculator client:load {scale} title="Standard 4.0 calculator"/>
+    <section class="section popular"><div class="section-heading"><div><span class="eyebrow">BROWSE CALCULATORS</span><h2>Popular universities</h2></div><a href="/country/pakistan">View all →</a></div>
+      <div class="cards">{universities.map(x=><a class="card" href={`/gpa-calculator/${x.slug}`}><span>{x.cityName}, {x.countryName}</span><h3>{x.name}</h3><p>{x.campus} · {x.gradingSystem} scale</p></a>)}</div>
+    </section>
+    <div class="content-grid" id="guide"><section class="section"><span class="eyebrow">HOW IT WORKS</span><h2>Simple math, useful results.</h2><p>GPA is a credit-weighted average. A four-credit course influences your result more than a one-credit course. Add each course, choose the grade, and we handle the weighting instantly.</p></section><aside class="side-note"><b>Privacy comes standard</b><span>No account is required. Course entries stay in your browser and are not uploaded.</span></aside></div>
+  </div>
+</BaseLayout>

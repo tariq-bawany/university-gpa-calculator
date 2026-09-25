@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import universities from '../../data/universities.json';
+export function getStaticPaths() {
+  const values = [...new Set(universities.map((x) => x.country))];
+  return values.map((value) => {
+    const list = universities.filter((x) => x.country === value);
+    return { params: { country: value }, props: { list, name: list[0]?.countryName } };
+  });
+}
+const { list, name } = Astro.props;
+---
+<BaseLayout title={`University GPA Calculators in ${name} | GPABound`}><div class="wrap directory"><span class="eyebrow">COUNTRY DIRECTORY</span><h1>GPA calculators in {name}</h1><p>Choose a campus to use its configured grading scale.</p><div class="cards">{list.map(x=><a class="card" href={`/gpa-calculator/${x.slug}`}><span>{x.cityName}</span><h3>{x.name}</h3><p>{x.campus} · {x.gradingSystem} scale</p></a>)}</div></div></BaseLayout>
