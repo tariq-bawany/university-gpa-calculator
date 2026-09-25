@@ -1,0 +1,19 @@
+---
+const grades = [
+  { grade: 'A', points: '4.00', meaning: 'Excellent' },
+  { grade: 'A−', points: '3.70', meaning: 'Very good' },
+  { grade: 'B+', points: '3.30', meaning: 'Good' },
+  { grade: 'B', points: '3.00', meaning: 'Good' },
+  { grade: 'B−', points: '2.70', meaning: 'Above satisfactory' },
+  { grade: 'C+', points: '2.30', meaning: 'Satisfactory' },
+  { grade: 'C', points: '2.00', meaning: 'Satisfactory' },
+  { grade: 'D', points: '1.00', meaning: 'Minimum passing grade at some institutions' },
+  { grade: 'F', points: '0.00', meaning: 'Fail' }
+];
+---
+<section class="section common-scale" aria-labelledby="common-scale-title">
+  <div class="section-heading"><div><span class="eyebrow">SCALE REFERENCE</span><h2 id="common-scale-title">What does “common 4.0 scale” mean?</h2></div></div>
+  <div class="scale-intro"><p>This calculator uses a <strong>commonly used, unweighted US-style 4.0 mapping</strong>. It is a fallback—not a universal or official global standard. Universities may assign different points, include additional grades, or use different passing rules.</p><aside><b>Important</b><span>Percentage cutoffs are intentionally not shown because an A may begin at 80%, 85%, 90%, or another mark depending on the institution.</span></aside></div>
+  <div class="table-wrap"><table><thead><tr><th>Letter grade</th><th>Grade points</th><th>General interpretation</th></tr></thead><tbody>{grades.map((item) => <tr><td><b>{item.grade}</b></td><td>{item.points}</td><td>{item.meaning}</td></tr>)}</tbody></table></div>
+  <p class="scale-footnote">If your university is listed, use its dedicated calculator. Otherwise, compare this mapping with your handbook or transcript legend before calculating.</p>
+</section>

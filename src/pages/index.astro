@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Calculator from '../components/CalculatorWidget.jsx';
 import UniversitySearch from '../components/UniversitySearch.jsx';
+import CommonScaleReference from '../components/CommonScaleReference.astro';
 import universities from '../data/universities.json';
 const scale=[{grade:'A',gpa:4},{grade:'A-',gpa:3.7},{grade:'B+',gpa:3.3},{grade:'B',gpa:3},{grade:'B-',gpa:2.7},{grade:'C+',gpa:2.3},{grade:'C',gpa:2},{grade:'D',gpa:1},{grade:'F',gpa:0}];
 ---
@@ -14,7 +15,8 @@ const scale=[{grade:'A',gpa:4},{grade:'A-',gpa:3.7},{grade:'B+',gpa:3.3},{grade:
     <div class="hero-proof"><span>✓ Free to use</span><span>✓ Private by design</span><span>✓ Credit-weighted</span></div>
   </div></section>
   <div class="wrap">
-    <Calculator client:load {scale} title="Standard 4.0 calculator"/>
+    <Calculator client:load {scale} title="Common 4.0 calculator"/>
+    <CommonScaleReference />
     <section class="section popular"><div class="section-heading"><div><span class="eyebrow">BROWSE CALCULATORS</span><h2>Popular universities</h2></div><a href="/country/pakistan">View all →</a></div>
       <div class="cards">{universities.map(x=><a class="card" href={`/gpa-calculator/${x.slug}`}><span>{x.cityName}, {x.countryName}</span><h3>{x.name}</h3><p>{x.campus} · {x.gradingSystem} scale</p></a>)}</div>
     </section>
