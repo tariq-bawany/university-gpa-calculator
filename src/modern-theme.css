@@ -1,0 +1,61 @@
+:root{
+  --ink:#1c2523;
+  --muted:#66716d;
+  --line:#dce2de;
+  --blue:#155e63;
+  --mint:#155e63;
+  --pale:#f3f5f2;
+  --accent:#155e63;
+  --contrast:#d9902f;
+  --warm:#f6f2e9;
+}
+
+body{background:#fcfcfa;color:var(--ink)}
+header{background:rgba(252,252,250,.95);backdrop-filter:blur(12px);border-color:#e7e9e5}
+.brand>span{background:var(--accent);border-radius:8px;box-shadow:0 5px 14px rgba(21,94,99,.18)}
+.brand b em,footer .brand b em{color:#b66e18}
+nav a{transition:color .18s ease}nav a:hover{color:var(--accent)}
+header .request,.primary{background:var(--accent)!important;box-shadow:0 5px 14px rgba(21,94,99,.12)}
+header .request:hover,.primary:hover{background:#104e52!important}
+
+.home-hero{background:linear-gradient(180deg,#f6f2e9 0%,#faf9f5 100%);border-color:#e9e4d9}
+.eyebrow{color:var(--accent)}
+.hero h1{color:#192421}.hero-proof span:first-child:before{color:var(--contrast)}
+.search-shell>input{border-color:#d8ddd9;border-radius:10px;box-shadow:0 10px 30px rgba(31,46,40,.07)}
+.search-shell>input:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(21,94,99,.12),0 10px 30px rgba(31,46,40,.07)}
+.search-results{border-radius:10px;box-shadow:0 20px 50px rgba(29,44,38,.15)}
+.search-results .place-result,.search-results .city-result{background:#eef5f3}.search-results .place-result:hover,.search-results .city-result:hover{background:#e4f0ed}
+
+.calc-card,.university-scale-panel,.calculator-reference-grid .common-scale{border-color:rgba(40,63,54,.13);border-radius:14px;box-shadow:0 16px 45px rgba(34,51,43,.075)}
+.calc-head{border-color:#e8ece8}.calc-head h2{letter-spacing:-.025em}
+.mode{height:42px;border:1px solid #e0e5e1;border-radius:999px;background:#f0f3f1}
+.mode button{border-radius:999px;transition:background .18s ease,color .18s ease}
+.mode .active{background:var(--accent);color:#fff;box-shadow:none}
+.course input,.course select,.semester-row input,.previous input,.modal input{border-color:transparent;border-radius:9px;background:#f1f4f2;outline:none;transition:border-color .15s ease,box-shadow .15s ease,background .15s ease}
+.course input:focus,.course select:focus,.semester-row input:focus,.previous input:focus,.modal input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(21,94,99,.11)}
+.semester-history{border-color:#dfe6e1;border-radius:11px;background:#edf2ee}
+.semester-history .semester-row input{background:#fff;border-color:#d7dfd9;box-shadow:0 1px 2px rgba(25,45,35,.035)}
+.semester-history .semester-row input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(21,94,99,.11)}
+.semester-title button{border-color:#cbd9d3;color:var(--accent);border-radius:8px}
+.add{color:var(--accent)}.save-state span{color:#47716f}
+.result{position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:12px;background:linear-gradient(125deg,#163a3c,#155e63);box-shadow:0 14px 30px rgba(21,74,77,.18)}
+.result:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--contrast)}
+.result strong{font-variant-numeric:tabular-nums}
+
+.card{border-radius:10px;background:#fff;box-shadow:0 5px 18px rgba(36,51,44,.035)}
+.card:hover{border-color:var(--accent);box-shadow:0 12px 28px rgba(28,68,57,.08)}
+.card span,.section-heading>a,.legal-page a{color:var(--accent)}
+.side-note{border-left-color:var(--accent);background:#edf4f1}
+.data-notice{border-color:#e5cf9e;background:#fbf5e7;color:#655535}.data-notice b{color:#9a611b}
+.table-wrap{border-radius:10px}th{background:#f2f5f3;color:#586760}
+.switch input{accent-color:var(--accent)}
+
+.modal{border-radius:14px;box-shadow:0 28px 80px rgba(15,30,25,.2)}
+.success-state>span{background:#e5f1ee;color:var(--accent)}
+.ad{background:#f7f8f6;border-color:#dfe3df;color:#929b94}
+footer{border-color:#e4e8e4}
+
+@media(max-width:720px){
+  .calc-card,.university-scale-panel,.calculator-reference-grid .common-scale{border-radius:12px}
+  .mode{width:100%}.mode button{flex:1}
+}
