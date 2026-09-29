@@ -13,11 +13,33 @@ const url = `https://gpabound.com/gpa-calculator/${u.slug}`;
 const title = `${u.name} (${u.campus}) GPA & CGPA Calculator`;
 const faq = u.faqs.length ? u.faqs : [
   { question: `How is GPA calculated at ${u.name}?`, answer: 'Multiply each course grade point by its credit hours, add the quality points, then divide by total attempted credit hours.' },
-  { question: 'Can I calculate cumulative GPA?', answer: 'Yes. Select CGPA mode and enter your previous cumulative GPA and completed credit hours.' }
+  { question: 'Can I calculate cumulative GPA?', answer: 'Yes. Select CGPA mode, add each previous semester GPA and its credit hours, then enter your current courses.' }
 ];
 const schemas = [
   { '@context': 'https://schema.org', '@type': 'WebApplication', name: `${u.name} ${u.cityName} GPA Calculator`, url, applicationCategory: 'EducationalApplication', operatingSystem: 'All', offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' } },
   { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [['Home','https://gpabound.com/'],[u.countryName,`https://gpabound.com/country/${u.country}`],[u.cityName,`https://gpabound.com/city/${u.city}`],[`${u.name} ${u.cityName}`,url]].map((x,i) => ({ '@type': 'ListItem', position: i+1, name:x[0], item:x[1] })) }
 ];
 ---
-<BaseLayout {title} description={u.metaDescription} canonical={url} jsonLd={schemas}><div class="wrap"><div class="breadcrumb"><a href="/">Home</a> › <a href={`/country/${u.country}`}>{u.countryName}</a> › <a href={`/city/${u.city}`}>{u.cityName}</a> › {u.name}</div><AdSlot size="banner"/><section class="hero"><span class="eyebrow">{u.cityName.toUpperCase()} · {u.gradingSystem} SCALE</span><h1>{u.name} ({u.campus}) GPA & CGPA Calculator</h1><p>Calculate your semester and cumulative GPA instantly with a calculator configured for the {u.name} grading scale.</p></section><Calculator client:load scale={u.scale} title={`${u.name} GPA calculator`} storageKey={u.slug}/><AdSlot size="box"/><section class="section"><h2>{u.name} {u.cityName} grading scale</h2><div class="data-notice"><b>Verification needed</b><span>This seed scale has not yet been linked to a primary university source. Confirm it against your current academic handbook before making decisions.</span></div><p>Use this reference to understand how letter grades translate into grade points. University policies can change by programme or academic year.</p><ScaleTable scale={u.scale}/></section><div class="content-grid"><section class="section"><h2>How to calculate CGPA at {u.name}</h2><p>First, multiply the grade points earned in each course by that course’s credit hours. Add those quality points and divide by the total current credit hours to get SGPA.</p><p>For CGPA, combine previous quality points (previous CGPA × previous credits) with the current semester’s quality points, then divide by all cumulative credits.</p></section><aside class="side-note"><b>Quick formula</b><span>CGPA = total cumulative quality points ÷ total attempted credit hours</span></aside></div><section class="section faq"><h2>Frequently asked questions</h2>{faq.map(f=><details><summary>{f.question}</summary><p>{f.answer}</p></details>)}</section>{related.length>0&&<section class="section"><h2>Related universities in {u.cityName}</h2><div class="cards">{related.map(x=><a class="card" href={`/gpa-calculator/${x.slug}`}><span>{x.cityName}</span><h3>{x.name}</h3><p>{x.campus} · {x.gradingSystem} scale</p></a>)}</div></section>}</div></BaseLayout>
+<BaseLayout {title} description={u.metaDescription} canonical={url} jsonLd={schemas}>
+  <div class="wrap">
+    <div class="breadcrumb"><a href="/">Home</a> › <a href={`/country/${u.country}`}>{u.countryName}</a> › <a href={`/city/${u.city}`}>{u.cityName}</a> › {u.name}</div>
+    <AdSlot size="banner"/>
+    <section class="hero"><span class="eyebrow">{u.cityName.toUpperCase()} · {u.gradingSystem} SCALE</span><h1>{u.name} ({u.campus}) GPA & CGPA Calculator</h1><p>Calculate your semester and cumulative GPA instantly with a calculator configured for the {u.name} grading scale.</p></section>
+
+    <div class="university-workspace-grid">
+      <Calculator client:load scale={u.scale} title={`${u.name} GPA calculator`} storageKey={u.slug}/>
+      <section class="section university-scale-panel">
+        <span class="eyebrow">SCALE REFERENCE</span>
+        <h2>{u.name} {u.cityName} grading scale</h2>
+        <div class="data-notice"><b>Verification needed</b><span>This seed scale has not yet been linked to a primary university source. Confirm it against your current academic handbook before making decisions.</span></div>
+        <p>Use this reference to see how letter grades translate into points. Policies may vary by programme or academic year.</p>
+        <ScaleTable scale={u.scale}/>
+      </section>
+    </div>
+
+    <AdSlot size="box"/>
+    <div class="content-grid"><section class="section"><h2>How to calculate CGPA at {u.name}</h2><p>First, multiply the grade points earned in each course by that course’s credit hours. Add those quality points and divide by the total current credit hours to get SGPA.</p><p>For CGPA, add each completed semester with its GPA and credit hours. The calculator combines those weighted results with your current semester’s course results.</p></section><aside class="side-note"><b>Quick formula</b><span>CGPA = total cumulative quality points ÷ total attempted credit hours</span></aside></div>
+    <section class="section faq"><h2>Frequently asked questions</h2>{faq.map(f=><details><summary>{f.question}</summary><p>{f.answer}</p></details>)}</section>
+    {related.length>0&&<section class="section"><h2>Related universities in {u.cityName}</h2><div class="cards">{related.map(x=><a class="card" href={`/gpa-calculator/${x.slug}`}><span>{x.cityName}</span><h3>{x.name}</h3><p>{x.campus} · {x.gradingSystem} scale</p></a>)}</div></section>}
+  </div>
+</BaseLayout>
