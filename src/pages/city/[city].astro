@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import AdSlot from '../../components/AdSlot.astro';
 import universities from '../../data/universities.json';
 export function getStaticPaths() {
   const values = [...new Set(universities.map((x) => x.city))];
@@ -10,4 +11,4 @@ export function getStaticPaths() {
 }
 const { list, name } = Astro.props;
 ---
-<BaseLayout title={`University GPA Calculators in ${name} | GPABound`}><div class="wrap directory"><span class="eyebrow">CITY DIRECTORY</span><h1>University GPA calculators in {name}</h1><p>Select your campus for a more accurate grade-point calculation.</p><div class="cards">{list.map(x=><a class="card" href={`/gpa-calculator/${x.slug}`}><span>{x.countryName}</span><h3>{x.name}</h3><p>{x.campus} · {x.gradingSystem} scale</p></a>)}</div></div></BaseLayout>
+<BaseLayout title={`University GPA Calculators in ${name} | GPABound`}><div class="wrap directory"><span class="eyebrow">CITY DIRECTORY</span><h1>University GPA calculators in {name}</h1><p>Select your campus for a more accurate grade-point calculation.</p><AdSlot size="banner"/><div class="cards directory-cards">{list.map(x=><a class="card" href={`/gpa-calculator/${x.slug}`}><span>{x.countryName}</span><h3>{x.name}</h3><p>{x.campus} · {x.gradingSystem} scale</p></a>)}</div></div></BaseLayout>
